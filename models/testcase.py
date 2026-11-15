@@ -1,8 +1,8 @@
 from uuid import UUID
 
-class Testcase:
+class TestCase:
 
-    def __init__(self, ID: str, title: str, description: str, expected_result: str):
+    def __init__(self, title: str, description: str, expected_result: str):
         self.id = UUID
         self.title = title
         self.description = description
