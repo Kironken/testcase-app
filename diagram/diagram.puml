@@ -1,0 +1,43 @@
+@startuml
+
+    skinparam classAttributeIconSize 0
+
+    class TestCase {
+        + id : UUID
+        + title: str
+        + description: str
+        + expected_result : str
+        + __init__(title, description, expected_result)
+    }
+
+    class TestResult {
+        + success: bool
+        + message: str
+        + __init__(success, message)
+    }
+
+
+    class TestCaseDialog {
+        - _service : TestCaseService
+        + show_menu() : None
+    }
+
+
+    class TestCaseService {
+        - _repository : TestCaseRepository
+        + register_test_case(title, description, expected_result) : None
+        + get_all_test_cases() : TestCase[0..*]
+    }
+
+
+   class TestCaseRepository {
+        - _test_cases : TestCase[0..*]
+        + add(test_case) : None
+        + get_all() : TestCase[0..*]
+    }
+
+
+TestCaseDialog ..> TestCaseService : <<uses>>
+TestCaseService ..> TestCaseRepository : <<uses>>
+TestCaseService ..> TestCase : <<uses>>
+TestCaseService ..> TestResult : <<uses>>
