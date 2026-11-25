@@ -1,5 +1,5 @@
 
 class TestResult:
     def __init__(self, success : bool, message : str):
-        self.success = success
-        self.message = message
+        self.success : bool = success
+        self.message : str = message
