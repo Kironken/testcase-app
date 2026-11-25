@@ -4,10 +4,10 @@ class TestCaseRepository:
 
 
     def __init__(self) -> None:
-        self.test_cases : list
+        self.__test_cases : list[TestCase] = []
 
     def add(self, test_case : TestCase):
-        self.test_cases.append(test_case)
+        self.__test_cases.append(test_case)
 
-    def get_all(self) -> list:
-        return self.test_cases
+    def get_all(self) -> list[TestCase]:
+        return self.__test_cases.copy()
